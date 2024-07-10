@@ -1,0 +1,56 @@
+services:
+    netbox:
+        image: ${IMAGE}:${TAG}
+        ports:
+          - 8080:8080
+        depends_on:
+            postgres:
+                condition: service_healthy
+            valkey:
+                condition: service_started
+            valkey-cache:
+                condition: service_started
+        user: 'unit:root'
+        healthcheck:
+            interval: 60s
+            start_period: 60s
+            start_interval: 5s
+            retries: 5
+            test: "curl -f http://localhost:8080/api/ || exit 1"
+        env_file: env/netbox.env
+        volumes:
+            - netbox-media-files:/opt/netbox/netbox/media
+            - netbox-reports-files:/opt/netbox/netbox/reports
+            - netbox-scripts-files:/opt/netbox/netbox/scripts
+    postgres:
+        image: docker.io/postgres:15-alpine
+        env_file: env/postgres.env
+        healthcheck:
+            interval: 60s
+            start_period: 60s
+            start_interval: 10s
+            retries: 5
+            test: "pg_isready -U $$POSTGRES_USER"
+        volumes:
+            - netbox-postgres-data:/var/lib/postgresql/data
+    valkey:
+        image: valkey/valkey:7-alpine
+        volumes:
+            - netbox-valkey-data:/data
+    valkey-cache:
+        image: valkey/valkey:7-alpine
+        volumes:
+            - netbox-valkey-cache-data:/data
+volumes:
+    netbox-media-files:
+        driver: local
+    netbox-postgres-data:
+        driver: local
+    netbox-valkey-cache-data:
+        driver: local
+    netbox-valkey-data:
+        driver: local
+    netbox-reports-files:
+        driver: local
+    netbox-scripts-files:
+        driver: local
