@@ -23,7 +23,10 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}" --build-arg NETBOX_VERSION=${{ vars.NETBOX_VERSION }}
+        run: |
+          NETBOX_VERSION=`curl -s https://api.github.com/repos/netbox-community/netbox/releases | jq -r 'sort_by(.published_at) | reverse | map(select(.prerelease == false)) | .[0].tag_name'`
+          echo NETBOX_VERSION=$NETBOX_VERSION
+          docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}" --build-arg NETBOX_VERSION=$NETBOX_VERSION
 
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
