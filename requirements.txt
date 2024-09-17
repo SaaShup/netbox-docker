@@ -1,3 +1,3 @@
 netbox-cloudflare-plugin == 0.*
-netbox-docker-plugin == 2.*
+netbox-docker-plugin == 3.*
 supervisor == 4.*
