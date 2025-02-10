@@ -19,7 +19,7 @@ On your favorite terminal (that we know the best terminal is
 [iTerm](https://iterm2.com/)) clone this repository and type:
 
 ```bash
-env TAG=latest IMAGE=ghcr.io/saashup/netbox-docker docker compose up -d
+env TAG=latest IMAGE=saashup/netbox-docker docker compose up -d
 ```
 
 # Hosting
