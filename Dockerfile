@@ -1,4 +1,4 @@
-ARG NETBOX_VERSION=v4.3.4
+ARG NETBOX_VERSION=v4.3.5
 
 FROM netboxcommunity/netbox:${NETBOX_VERSION}
 
