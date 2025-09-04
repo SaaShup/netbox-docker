@@ -9,4 +9,6 @@ COPY configuration/plugins.py /etc/netbox/config/plugins.py
 COPY configuration/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY entrypoint.sh /opt/netbox/entrypoint.sh
 
+LABEL internal_version="4.3.7.4"
+
 CMD ["/opt/netbox/entrypoint.sh"]
