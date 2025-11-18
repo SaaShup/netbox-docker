@@ -1,4 +1,4 @@
 netbox-cloudflare-plugin == 0.*
-netbox-docker-plugin == 4.8.*
+netbox-docker-plugin == 4.9.*
 netbox-passhup-plugin == 0.*
 supervisor == 4.*
