@@ -1,4 +1,5 @@
 netbox-cloudflare-plugin == 0.*
 netbox-docker-plugin == 4.10.*
 netbox-passhup-plugin == 0.*
+netbox-plugin-prometheus-sd == 1.2.0
 supervisor == 4.*
