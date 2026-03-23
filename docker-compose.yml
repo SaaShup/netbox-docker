@@ -8,7 +8,6 @@ services:
                 condition: service_healthy
             redis:
                 condition: service_started
-        user: "unit:root"
         healthcheck:
             interval: 60s
             start_period: 60s
@@ -31,6 +30,7 @@ services:
             test: "pg_isready -U $$POSTGRES_USER"
         volumes:
             - netbox-postgres-data:/var/lib/postgresql
+            - dumps:/dumps
     redis:
         image: redis:8
         volumes:
@@ -47,4 +47,6 @@ volumes:
     netbox-reports-files:
         driver: local
     netbox-scripts-files:
+        driver: local
+    dumps:
         driver: local
