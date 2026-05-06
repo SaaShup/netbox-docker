@@ -1,4 +1,4 @@
-ARG NETBOX_VERSION=v4.5.9
+ARG NETBOX_VERSION=v4.5.10
 
 FROM netboxcommunity/netbox:${NETBOX_VERSION}
 
@@ -9,6 +9,6 @@ COPY configuration/plugins.py /etc/netbox/config/plugins.py
 COPY configuration/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY entrypoint.sh /opt/netbox/entrypoint.sh
 
-LABEL internal_version="4.5.9.0"
+LABEL internal_version="4.5.10.0"
 
 CMD ["/opt/netbox/entrypoint.sh"]
