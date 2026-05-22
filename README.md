@@ -22,5 +22,7 @@ On your favorite terminal (that we know the best terminal is
 env TAG=latest IMAGE=saashup/netbox-docker docker compose up -d
 ```
 
+Unlike [the official Netbox Docker distribution](https://github.com/netbox-community/netbox-docker), we have acivated the [BASE_PATH](https://netboxlabs.com/docs/netbox/configuration/system/#base_path) environment variable.
+
 # Hosting
 Check https://saashup.com for more information.
