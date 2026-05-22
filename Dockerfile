@@ -1,4 +1,4 @@
-ARG NETBOX_VERSION=v4.6.0
+ARG NETBOX_VERSION=v4.6.1
 
 FROM netboxcommunity/netbox:${NETBOX_VERSION}
 
@@ -9,7 +9,7 @@ COPY configuration/plugins.py /etc/netbox/config/plugins.py
 COPY configuration/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY entrypoint.sh /opt/netbox/entrypoint.sh
 
-LABEL internal_version="4.6.0.0"
+LABEL internal_version="4.6.1.0"
 LABEL prometheus_scrape="true"
 LABEL prometheus_address="netbox:8080"
 
