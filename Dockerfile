@@ -11,7 +11,7 @@ COPY configuration/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY docker/entrypoint.sh /opt/netbox/entrypoint.sh
 COPY docker/launch-netbox.sh /opt/netbox/launch-netbox.sh
 
-LABEL internal_version="4.6.1.1"
+LABEL internal_version="4.6.1.2"
 LABEL prometheus_scrape="true"
 LABEL prometheus_address="netbox:8080"
 
